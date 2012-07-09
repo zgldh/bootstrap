@@ -15,6 +15,7 @@ imagefill($big_png,0,0,$alpha);
 
 $css_file = 'icons_big.css';
 $css_code = ".icon-big{background-image:url(icons_big.png);background-repeat:no-repeat;display:inline-block;height:36px; width: 36px;vertical-align:text-top;}\n";
+$css_code .= ".icon-white.icon-big{background-image:url(icons_big_white.png);}\n";
 $size_w = 36;
 $size_h = 36;
 $start_x = 0;
@@ -48,6 +49,8 @@ foreach($icon_files as $key=>$path)
 }
 
 imagepng ($big_png,'icons_big.png');
+imagefilter($big_png,IMG_FILTER_NEGATE);
+imagepng ($big_png,'icons_big_white.png');
 file_put_contents($css_file,$css_code);
 echo "ALL COMPLETE!";
 
